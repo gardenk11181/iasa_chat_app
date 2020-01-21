@@ -12,6 +12,7 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<ChatData> mDataset;
+    private String nick;
 
 
     // Provide a reference to the views for each data item
@@ -29,8 +30,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<ChatData> myDataset) {
+    public MyAdapter(List<ChatData> myDataset, String nick) {
         mDataset = myDataset;
+        this.nick = nick;
     }
 
     // Create new views (invoked by the layout manager)
@@ -54,6 +56,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         holder.TextView_nick.setText(chat.getNick());
         holder.TextView_msg.setText(chat.getMsg());
+
+        if(nick.equals(chat.getNick())) {
+            holder.TextView_nick.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
+            holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+        } else {
+            holder.TextView_nick.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+            holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+        }
 
     }
 

@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        mAdapter = new MyAdapter(myDataset);
+        mAdapter = new MyAdapter(myDataset, nick);
         recyclerView.setAdapter(mAdapter);
     }
     // ...
